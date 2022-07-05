@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BsHeart, BsFillBagFill, BsSearch } from 'react-icons/bs';
+import { useAppContext } from '../context/appContext';
 const CartIcons = () => {
+  const { openMobileSearchBox } = useAppContext();
   return (
     <CartIconsWrapper>
-      <div className="search-icon">
+      <div className="search-icon" onClick={openMobileSearchBox}>
         <BsSearch />
         <p>Search</p>
       </div>

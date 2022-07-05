@@ -87,14 +87,17 @@ const SidebarWrapper = styled.aside`
       padding-bottom: 4px;
       padding-right: 4px;
       cursor: pointer;
+      border-bottom-width: 3px;
+      border-bottom-style: solid;
+      border-bottom-color: transparent;
+      font-weight: bold;
       &:first-of-type {
         margin-right: 50px;
       }
     }
     p.active {
-      border-bottom: 3px solid var(--secondary-color);
+      border-bottom-color: var(--secondary-color);
       color: var(--secondary-color);
-      font-weight: bold;
     }
   }
   .menu-links {

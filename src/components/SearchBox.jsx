@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-const SearchBox = () => {
+const SearchBox = ({ mobile }) => {
   return (
-    <SearchBoxWrapper>
+    <SearchBoxWrapper mobile={mobile}>
       <div className="search-input">
         <FaSearch />
         <input type="text" placeholder="Search" />
       </div>
-      <button type="submit">search</button>
+      <button className="search-btn" type="submit">
+        search
+      </button>
     </SearchBoxWrapper>
   );
 };
 
 const SearchBoxWrapper = styled.form`
-  display: none;
+  display: ${({ mobile }) => (mobile ? 'block' : 'none')};
   justify-content: center;
   flex: 1;
   .search-input {
@@ -22,7 +24,8 @@ const SearchBoxWrapper = styled.form`
     max-width: 460px;
   }
   input {
-    padding: 1rem 1rem 1rem 4rem;
+    padding: ${({ mobile }) =>
+      mobile ? ' .8rem .8rem .8rem 4rem' : ' 1rem 1rem 1rem 4rem'};
     width: 100%;
     border-radius: 0;
     border: 1px solid var(--primary-color);
@@ -34,18 +37,19 @@ const SearchBoxWrapper = styled.form`
     transform: translateY(-50%);
     font-size: 1.6rem;
   }
-  button {
+  .search-btn {
     border: none;
-    padding: 1rem 3rem;
+    padding: ${({ mobile }) => (mobile ? '.8rem 2.4rem' : '1rem 3rem')};
     border: 1px solid var(--primary-color);
     color: white;
     background: var(--primary-color);
     cursor: pointer;
     text-transform: capitalize;
     font-weight: bold;
+    margin-top: ${({ mobile }) => (mobile ? '1rem' : '0')};
   }
   @media (min-width: 768px) {
-    display: flex;
+    display: ${({ mobile }) => (mobile ? 'none' : 'flex')};
   }
 `;
 export default SearchBox;

@@ -5,13 +5,16 @@ import Logo from './Logo';
 import SearchBox from './SearchBox';
 import { useAppContext } from '../context/appContext';
 import Sidebar from './Sidebar';
+import MobileSearchBox from './MobileSearchBox';
 
 const Header = () => {
-  const { isSidebarOpen, openSidebar, closeSidebar } = useAppContext();
+  const { isSidebarOpen, openSidebar, closeSidebar, isMobileSearchBoxOpen } =
+    useAppContext();
   return (
     <HeaderWrapper className="py-2">
       <Sidebar isSidebarOpen={isSidebarOpen} closeSidebar={closeSidebar} />
       <div className="container">
+        <MobileSearchBox />
         <FaBars className="toggle-sidebar-btn" onClick={openSidebar} />
         <Logo />
         <SearchBox />
@@ -28,6 +31,7 @@ const HeaderWrapper = styled.header`
     align-items: center;
     justify-content: space-between;
     gap: 4rem;
+    position: relative;
   }
   .toggle-sidebar-btn {
     cursor: pointer;
